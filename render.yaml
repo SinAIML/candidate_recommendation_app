@@ -1,0 +1,35 @@
+services:
+  # Backend Service (FastAPI)
+  - type: web
+    name: candidate-rec-backend
+    env: python
+    region: ohio
+    plan: free
+    branch: main
+    rootDir: ./
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: HUGGING_FACE_API_BASE
+        sync: false  # You'll add this in Render dashboard
+      - key: HF_API_KEY
+        sync: false  # You'll add this in Render dashboard
+    healthCheckPath: /health
+
+  # Frontend Service (Streamlit)
+  - type: web
+    name: candidate-rec-frontend
+    env: python
+    region: ohio
+    plan: free
+    branch: main
+    rootDir: ./frontend
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: API_URL
+        value: https://candidate-rec-backend.onrender.com  # Update after backend is deployed
