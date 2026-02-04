@@ -11,7 +11,7 @@ pydantic==2.10.6
 requests>=2.32.3
 boto3>=1.34.131
 python-dotenv>=1.0.1
-torch
+#torch
 transformers
 sentence-transformers==2.2.2
 langchain-community>=0.3.1
