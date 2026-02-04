@@ -36,6 +36,7 @@ class SimilarityService:
             np.ndarray: A normalized embedding vector representing the semantic meaning of the text
         """
         return self.model.encode(text, normalize_embeddings=True)
+        #model.encode(list_of_texts, batch_size=N, convert_to_numpy=True)
 
     def calculate_similarity(self, emb1: np.ndarray, emb2: np.ndarray) -> float:
         """
@@ -115,7 +116,7 @@ class SimilarityService:
             api_key=os.getenv("HF_API_KEY")    
             )
             response = client.chat.completions.create(
-                model="Qwen/Qwen3-Coder-30B-A3B-Instruct:fireworks-ai",
+                model="Qwen/Qwen3-Coder-30B-A3B-Instruct",
                 messages=[{"role": "user", "content": prompt}],
                 
             )

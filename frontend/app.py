@@ -10,7 +10,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configure the API endpoint URL, defaulting to localhost if not specified in .env
-API_URL = os.getenv("API_URL", "http://18.224.18.131:8000")
+#API_URL = os.getenv("API_URL", "http://18.224.18.131:8000")
+API_URL = os.getenv("API_URL", "http://localhost:8000")
 
 def main():
     """
