@@ -15,7 +15,7 @@ python-dotenv>=1.0.1
 # ML & NLP
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.2.0+cpu
-sentence-transformers==2.2.2
+sentence-transformers>=2.7.0
 numpy==1.26.4
 openai>=1.59.0
 
